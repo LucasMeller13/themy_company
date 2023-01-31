@@ -2,12 +2,10 @@
 import datetime
 
 import folium
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import plotly
 import plotly.express as px
-import seaborn as sns
 import streamlit as st
 from PIL import Image
 from streamlit_folium import folium_static
