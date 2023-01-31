@@ -10,7 +10,7 @@ from streamlit_folium import folium_static
 
 # Import dataset
 #path = 'C:\\Users\\lucas\\OneDrive\\CDS\\jupyter\\train.csv'
-df_raw = pd.DataFrame(pd.read_csv('dataset\\train.csv'))
+df_raw = pd.DataFrame(pd.read_csv('dataset/train.csv'))
 
 # Functions 
 
