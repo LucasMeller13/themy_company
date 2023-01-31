@@ -28,3 +28,17 @@ data = (st.sidebar.slider('Até qual valor?',
 st.sidebar.markdown('''---''')
 
 st.sidebar.markdown('# Powered by Lucas Meller')
+
+st.markdown(
+    """
+    Growth Dashboard foi construído para acompanhar as métricas de crescimento dos Entregadores e Restaurantes.
+    ### Como utilizar esse Growth Dashboard?
+    - Visão Empresa: 
+        - Visão Gerencial: Métricas gerais de comportamento.
+        - Visão Tática: Indicadores semanais de crescimento.
+        - Visão Geográfica: Insights de geolocalização.
+    - Visão Entregador: 
+        - Acompanhamento dos indicadores semanais de crescimento
+    - Visão Restaurante:
+        - Indicadores semanais de crescimento dos restaurantes
+""" )
