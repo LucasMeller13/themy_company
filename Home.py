@@ -9,7 +9,7 @@ st.set_page_config(layout="wide", page_title='Home', page_icon='📃')
 image = Image.open('logo.png')
 st.sidebar.image(image, width=150)
 
-st.header('Marketplace')
+st.header('Marketplace - Home')
 
 st.markdown('''---''')
 
