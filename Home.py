@@ -17,7 +17,7 @@ st.sidebar.markdown('# Themy Company')
 st.sidebar.markdown('## Fastest delivery in town')
 
 st.sidebar.markdown('''---''')
-
+'''
 st.sidebar.markdown('# Selecione uma data limite')
 data = (st.sidebar.slider('Até qual data?',
                         min_value=datetime.datetime(2022,2,11),
@@ -26,7 +26,7 @@ data = (st.sidebar.slider('Até qual data?',
                         format='DD-MM-YYYY'))
 
 st.sidebar.markdown('''---''')
-
+'''
 st.sidebar.markdown('# Powered by Lucas Meller')
 
 st.markdown(
