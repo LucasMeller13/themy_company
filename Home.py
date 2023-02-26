@@ -17,6 +17,9 @@ st.sidebar.markdown('# Themy Company')
 st.sidebar.markdown('## Fastest delivery in town')
 
 st.sidebar.markdown('''---''')
+
+st.sidebar.markdown('# Powered by Lucas Meller')
+
 '''
 st.sidebar.markdown('# Selecione uma data limite')
 data = (st.sidebar.slider('Até qual data?',
@@ -27,7 +30,7 @@ data = (st.sidebar.slider('Até qual data?',
 
 st.sidebar.markdown('''---''')
 '''
-st.sidebar.markdown('# Powered by Lucas Meller')
+
 
 st.markdown(
     """
