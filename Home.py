@@ -20,16 +20,12 @@ st.sidebar.markdown('''---''')
 
 st.sidebar.markdown('# Powered by Lucas Meller')
 
-'''
-st.sidebar.markdown('# Selecione uma data limite')
-data = (st.sidebar.slider('Até qual data?',
-                        min_value=datetime.datetime(2022,2,11),
-                        max_value=datetime.datetime(2022,4,6),
-                        value=datetime.datetime(2022,3,19),
-                        format='DD-MM-YYYY'))
 
-st.sidebar.markdown('''---''')
-'''
+#st.sidebar.markdown('# Selecione uma data limite')
+#data = (st.sidebar.slider('Até qual data?', min_value=datetime.datetime(2022,2,11), max_value=datetime.datetime(2022,4,6), value=datetime.datetime(2022,3,19), format='DD-MM-YYYY'))
+
+#st.sidebar.markdown('''---''')
+
 
 
 st.markdown(
