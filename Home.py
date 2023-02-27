@@ -30,7 +30,7 @@ st.sidebar.markdown('# Powered by Lucas Meller')
 
 st.markdown(
     """
-    Growth Dashboard foi construído para acompanhar as métricas de crescimento dos Entregadores e Restaurantes.
+    Growth Dashboard foi construído para acompanhar as métricas de crescimento da Empresa, dos Entregadores e dos Restaurantes.
     ### Como utilizar esse Growth Dashboard?
     - **Visão Empresa:** 
         - Visão Gerencial: Métricas gerais de comportamento.
