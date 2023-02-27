@@ -1,10 +1,10 @@
 ## 1. O Problema do Negócio
 
-A **Themy Company** é uma empresa de tecnologia que criou um aplicativo que conecta restaurantes, entregadores e pessoas. Através desse aplicativo é possível realizar o pedidos de uma refeição, em qualquer restaurante cadastrado, e recebê-lo no conforto da sua casa por um entregador também cadastrado no aplicativo da Themy Company.
+A **Themy Company** é uma empresa de tecnologia que criou um aplicativo que conecta restaurantes, entregadores e pessoas. Através desse aplicativo é possível realizar pedidos de uma refeição, em qualquer restaurante cadastrado, e recebê-lo no conforto da sua casa por um entregador também cadastrado no aplicativo da Themy Company.
 
 A empresa gera muitas informações com o aplicativo como dados de entrega, de condição climática e de avaliações do pedido. Contudo, atualmente o CEO não tem visibilidade completa dos KPIs de crescimento da empresa para a tomada de decisões com base nas informações armazenadas em seu banco de dados.
 
-Assim, você foi contratado como Cientista de Dados para criar soluções de dados, porém antes de treinar algoritmos é necessário organizar todos os KPIs estratégicos em uma ferramenta para que a equipe, juntamente com o CEO, possa consultar as métricas e tomar melhores decisões.
+Assim, você foi contratado como Cientista de Dados para criar soluções de dados, porém antes de treinar algoritmos é necessário organizar todos os KPIs estratégicos em uma ferramenta para que a equipe, juntamente com o CEO, possa consultar as métricas e previamente tomar melhores decisões.
 
 Para acompanhar o crescimento desses negócios, o CEO gostaria de ver as seguintes métricas de crescimento:
 
