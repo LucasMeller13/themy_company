@@ -1,4 +1,4 @@
-## 1. Problema do Negócio
+## 1. O Problema do Negócio
 
 A **Themy Company** é uma empresa de tecnologia que criou um aplicativo que conecta restaurantes, entregadores e pessoas. Através desse aplicativo é possível realizar o pedidos de uma refeição, em qualquer restaurante cadastrado, e recebê-lo no conforto da sua casa por um entregador também cadastrado no aplicativo da Themy Company.
 
