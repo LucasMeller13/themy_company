@@ -34,7 +34,11 @@ def clean_dataframe(dataframe):
 
 def plot_fig1():
     x = df.groupby(['Order_Date'])[['ID']].count().reset_index().sort_values(by='Order_Date')
-    fig1 = px.bar(data_frame=x, x='Order_Date', y='ID')
+    fig1 = px.bar(data_frame=x,
+                  x='Order_Date',
+                  y='ID',
+                  labels={'Order_Date':'Data','ID':'Quantidade de Pedidos'})
+    fig1.update_traces(hovertemplate='Data: %{x}<br>Quantidade de Pedidos: %{y}<extra></extra>')
     
     return fig1
 
@@ -42,15 +46,28 @@ def plot_fig1():
 def plot_fig2():
     df['week_of_the_year'] = df['Order_Date'].dt.strftime('%W')
     df_pizza = df.groupby('Road_traffic_density')[['ID']].count().reset_index()
-    fig2 = px.pie(names=list(df_pizza['Road_traffic_density']), values=list(df_pizza['ID']))
-    fig2.update_traces(textinfo='percent+label', textposition='inside', hoverinfo='label+percent', marker=dict(line=dict(color='#000000', width=1)))
+    fig2 = px.pie(names=list(df_pizza['Road_traffic_density']),
+                  values=list(df_pizza['ID']),
+                  labels={'Road_traffic_density':'Densidade Tráfego'})
+    fig2.update_traces(textinfo='percent+label',
+                       textposition='inside',
+                       hoverinfo='label+percent',
+                       marker=dict(line=dict(color='#000000', width=1)))
     
     return fig2
 
 
 def plot_fig3():
     df_multiple_index = df.groupby(['City','Road_traffic_density'])[['ID']].count().reset_index()
-    fig3 = px.bar(df_multiple_index, x='City', y='ID', color='Road_traffic_density', barmode='group', text='Road_traffic_density')
+    fig3 = px.bar(df_multiple_index,
+                  x='City',
+                  y='ID', 
+                  color='Road_traffic_density',
+                  barmode='group',
+                  text='Road_traffic_density',
+                  labels={'Road_traffic_density':'Tipos de Densidade de Tráfego',
+                          'ID':'Quantidade de Pedidos','City':'Cidade'})
+    fig3.update_traces(hovertemplate='Cidade: %{x}<br>Densidade do Tráfego: %{text}<br>Quantidade de Pedidos: %{y}<extra></extra>')
     
     return fig3
 
@@ -59,17 +76,29 @@ def plot_fig4():
     x = df.groupby(['Order_Date'])[['ID']].count().reset_index().sort_values(by='Order_Date')
     x['week_of_the_year'] = x['Order_Date'].dt.strftime('%W')
     y = x.groupby('week_of_the_year')[['ID']].sum().reset_index()
-    fig4 = px.line(data_frame=y, x='week_of_the_year', y='ID')
+    fig4 = px.line(data_frame=y,
+                   x='week_of_the_year',
+                   y='ID',
+                   labels={'week_of_the_year':'Semana do Ano','ID':'Quantidade de Pedidos'})
+    
+    fig4.update_traces(hovertemplate='Semana do Ano: %{x}<br>Quantidade de Pedidos: %{y}<extra></extra>')
     
     return fig4    
 
 
 def plot_fig5():
-    fig5 = df.groupby(['week_of_the_year'])[['ID']].count().reset_index().sort_values(by='week_of_the_year')
-    figy = df.groupby(['week_of_the_year'])[['Delivery_person_ID']].nunique().reset_index().sort_values(by='week_of_the_year')
-    fig5['result'] = fig5['ID'] / figy['Delivery_person_ID']
-    fig5['week_of_the_year'] = fig5['week_of_the_year'].astype(float)
-    fig5 = fig5.sort_values(by='week_of_the_year')
+    df_fig5 = df.groupby(['week_of_the_year'])[['ID']].count().reset_index().sort_values(by='week_of_the_year')
+    fig_y = df.groupby(['week_of_the_year'])[['Delivery_person_ID']].nunique().reset_index().sort_values(by='week_of_the_year')
+    df_fig5['result'] = df_fig5['ID'] / fig_y['Delivery_person_ID']
+    df_fig5['week_of_the_year'] = df_fig5['week_of_the_year'].astype(float)
+    df_fig5 = df_fig5.sort_values(by='week_of_the_year')
+    
+    fig5 = px.line(data_frame=df_fig5,
+                   x='week_of_the_year',
+                   y='result',
+                   labels={'week_of_the_year':'Semana do Ano','result':'Média de Entrega por Entregador'})
+    
+    fig5.update_traces(hovertemplate='Semana do Ano: %{x}<br>Média de Pedidos por Entregador: %{y}<extra></extra>')
     
     return fig5
 
@@ -134,7 +163,7 @@ tab1,tab2,tab3 = st.tabs(['Visão Gerencial','Visão Tática','Visão Geográfic
 with tab1:
     
     with st.container():   
-        st.header('Orders by Day')
+        st.header('Pedidos por Dia')
         st.plotly_chart(plot_fig1(), use_container_width=True)
     
     col1,col2 = st.columns(2)
@@ -142,24 +171,24 @@ with tab1:
     with st.container():
         
         with col1: 
-            st.header('Traffic Order Share')
+            st.header('Pedidos por Tráfego')
             st.plotly_chart(plot_fig2(), use_container_width=True)
             
         with col2:
-            st.header('Traffic Order City')
+            st.header('Pedidos por Tráfego e por Cidade')
             st.plotly_chart(plot_fig3(), use_container_width=True)
         
 with tab2:
     
     with st.container():
-        st.header('Delivery per Week')
+        st.header('Entregas por Semana')
         st.plotly_chart(plot_fig4(), use_container_width=True)
         
     st.markdown('''---''')
     
     with st.container():
-        st.header('Delivery Mean per Week per Delivery Person')
-        st.plotly_chart(px.line(plot_fig5(), x='week_of_the_year', y='result'), use_container_width=True)
+        st.header('Média de Entregas por Semana por Entregador')
+        st.plotly_chart(plot_fig5(), use_container_width=True)
         
 with tab3:
     st.header('Country Maps')

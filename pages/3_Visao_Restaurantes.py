@@ -52,11 +52,15 @@ def plot_fig1(): # Tempo médio de entrega por cidade
     mean_city = df.groupby('City')[['Time_to_deliver']].mean().reset_index()
     mean_city['Time_to_deliver'] = mean_city['Time_to_deliver'].apply(lambda x: round(x))
     
-    fig1 = px.bar(mean_city, x='Time_to_deliver', y='City', color='City',
-                range_x=[mean_city['Time_to_deliver'].min()-5,mean_city['Time_to_deliver'].max()+5])
+    fig1 = px.bar(mean_city,
+                  x='Time_to_deliver',
+                  y='City',
+                  color='City',
+                  range_x=[mean_city['Time_to_deliver'].min()-5,mean_city['Time_to_deliver'].max()+5],
+                  labels={'Time_to_deliver':'Tempo Médio de Entrega','City':'Cidade'})
     
-    fig1.update_layout(showlegend=False, hoverlabel=dict(bgcolor="white",font_size=16,font_family="Rockwell", font_color='black'), hoverlabel_align = 'left')
-    fig1.update_traces(hovertemplate='<br><b>Cidade:</b> %{y} <br><b>Tempo de entrega:</b> %{x} minutos<extra></extra>')
+    fig1.update_traces(hovertemplate='<b>Cidade:</b> %{y} <br><b>Média:</b> %{x} minutos<extra></extra>',
+                       showlegend=False)
     
     return fig1
        
@@ -65,11 +69,15 @@ def plot_fig2(): # Desvio padrão do tempo de entrega por cidade
     std_city = df.groupby('City')[['Time_to_deliver']].std().reset_index()
     std_city['Time_to_deliver'] = std_city['Time_to_deliver'].apply(lambda x: round(x,3))
     
-    fig2 = px.bar(std_city, x='Time_to_deliver', y='City', color='City',
-                range_x=[std_city['Time_to_deliver'].min()-1,std_city['Time_to_deliver'].max()+1])
+    fig2 = px.bar(std_city,
+                  x='Time_to_deliver',
+                  y='City',
+                  color='City',
+                  range_x=[std_city['Time_to_deliver'].min()-1,std_city['Time_to_deliver'].max()+1],
+                  labels={'Time_to_deliver':'Tempo Desvio Padrão de Entrega','City':'Cidade'})
     
-    fig2.update_layout(showlegend=False, hoverlabel=dict(bgcolor="white",font_size=16,font_family="Rockwell", font_color='black'), hoverlabel_align = 'left')
-    fig2.update_traces(hovertemplate='<br><b>Cidade:</b> %{y} <br><b>Desvio padrão:</b> %{x}<extra></extra>')
+    fig2.update_traces(hovertemplate='<b>Cidade:</b> %{y} <br><b>Desvio Padrão:</b> %{x}<extra></extra>',
+                       showlegend=False)
     
     return fig2
         
@@ -84,10 +92,11 @@ def plot_fig3(): # Tempo médio de entrega por cidade e por pedido
                         color='Type_of_order',
                         text='Type_of_order',
                         range_y=[mean_city_order['Time_to_deliver'].min()-5,mean_city_order['Time_to_deliver'].max()+5],
-                        barmode='group')
+                        barmode='group',
+                        labels={'City':'Cidade','Time_to_deliver':'Tempo Médio de Entrega','Type_of_order':'Tipo de Entrega'})
     
-    fig3.update_layout(showlegend=False, hoverlabel=dict(bgcolor="white",font_size=16,font_family="Rockwell", font_color='black'), hoverlabel_align = 'left')
-    fig3.update_traces(hovertemplate='<br><b>Tipo de pedido:</b> %{text} <br><b>Cidade:</b> %{x} <br><b>Tempo de entrega:</b> %{y} minutos<extra></extra>')
+    fig3.update_traces(hovertemplate='<b>Tipo de pedido:</b> %{text} <br><b>Cidade:</b> %{x} <br><b>Tempo de entrega:</b> %{y} minutos<extra></extra>',
+                       showlegend=False)
     
     return fig3
        
@@ -102,10 +111,11 @@ def plot_fig4(): # Desvio padrão do tempo de entrega por cidade e por pedido
                         color='Type_of_order',
                         text='Type_of_order',
                         range_y=[std_city_order['Time_to_deliver'].min()-2,std_city_order['Time_to_deliver'].max()+2],
-                        barmode='group')       
+                        barmode='group',
+                        labels={'City':'Cidade','Time_to_deliver':'Tempo Desvio Padrão de Entrega','Type_of_order':'Tipo de Entrega'})       
 
-    fig4.update_layout(showlegend=False, hoverlabel=dict(bgcolor="white",font_size=16,font_family="Rockwell", font_color='black'), hoverlabel_align = 'left')
-    fig4.update_traces(hovertemplate='<br><b>Tipo de pedido:</b> %{text} <br><b>Cidade:</b> %{x} <br><b>Desvio padrão:</b> %{y}<extra></extra>')
+    fig4.update_traces(hovertemplate='<b>Tipo de pedido:</b> %{text} <br><b>Cidade:</b> %{x} <br><b>Desvio padrão:</b> %{y}<extra></extra>',
+                       showlegend=False)
     
     return fig4
 
@@ -120,10 +130,11 @@ def plot_fig5(): # Tempo médio de entrega por cidade e por tráfego
                         color='Road_traffic_density',
                         text='Road_traffic_density',
                         range_y=[mean_city_road['Time_to_deliver'].min()-5,mean_city_road['Time_to_deliver'].max()+5],
-                        barmode='group')    
+                        barmode='group',
+                        labels={'City':'Cidade','Time_to_deliver':'Tempo Médio de Entrega','Road_traffic_density':'Tipo de Densidade de Tráfego'})    
     
-    fig5.update_layout(showlegend=False, hoverlabel=dict(bgcolor="white",font_size=16,font_family="Rockwell", font_color='black'), hoverlabel_align = 'left')
-    fig5.update_traces(hovertemplate='<br><b>Densidade do tráfego:</b> %{text} <br><b>Cidade:</b> %{x} <br><b>Tempo de entrega:</b> %{y} minutos<extra></extra>')
+    fig5.update_traces(hovertemplate='<b>Densidade do tráfego:</b> %{text} <br><b>Cidade:</b> %{x} <br><b>Tempo de entrega:</b> %{y} minutos<extra></extra>',
+                       showlegend=False)
     
     return fig5
 
@@ -138,10 +149,11 @@ def plot_fig6(): # Desvio padrão do tempo de entrega por cidade e por tráfego
                     color='Road_traffic_density',
                     text='Road_traffic_density',
                     range_y=[std_city_road['Time_to_deliver'].min()-1,std_city_road['Time_to_deliver'].max()+1],
-                    barmode='group')
+                    barmode='group',
+                    labels={'City':'Cidade','Time_to_deliver':'Tempo Desvio Padrão de Entrega','Road_traffic_density':'Tipo de Densidade de Tráfego'})
     
-    fig6.update_layout(showlegend=False, hoverlabel=dict(bgcolor="white",font_size=16,font_family="Rockwell", font_color='black'), hoverlabel_align = 'left')
-    fig6.update_traces(hovertemplate='<br><b>Densidade do tráfego:</b> %{text} <br><b>Cidade:</b> %{x} <br><b>Desvio padrão:</b> %{y}<extra></extra>')
+    fig6.update_traces(hovertemplate='<br><b>Densidade do tráfego:</b> %{text} <br><b>Cidade:</b> %{x} <br><b>Desvio padrão:</b> %{y}<extra></extra>',
+                       showlegend=False)
     
     return fig6
 

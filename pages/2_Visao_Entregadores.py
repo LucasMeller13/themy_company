@@ -42,9 +42,10 @@ def plot_fig1():
     fig1 = px.bar(xx, x='Time_to_deliver',
                 y='Delivery_person_ID',
                 range_x=[xx['Time_to_deliver'].min()-0.06,xx['Time_to_deliver'].max()+0.06],
-                labels={'Time_to_deliver':'tempo_entrega', 'Delivery_person_ID':'id_entregador'},
+                labels={'Time_to_deliver':'Tempo Médio de Entrega', 'Delivery_person_ID':'ID do Entregador'},
                 color='Delivery_person_ID')
-    fig1.update_traces(showlegend=False) 
+    fig1.update_traces(showlegend=False,
+                       hovertemplate='<b>ID do Entregador:</b> %{y}<br><b>Tempo Médio de Entrega:</b> %{x}<extra></extra>') 
     
     return fig1
 
@@ -55,31 +56,38 @@ def plot_fig2():
     fig2 = px.bar(yy, x='Time_to_deliver',
                 y='Delivery_person_ID',
                 range_x=[yy['Time_to_deliver'].min()-0.06,yy['Time_to_deliver'].max()+0.06],
-                labels={'Time_to_deliver':'tempo_entrega', 'Delivery_person_ID':'id_entregador'},
+                labels={'Time_to_deliver':'Tempo Médio de Entrega', 'Delivery_person_ID':'ID do Entregador'},
                 color='Delivery_person_ID')
-    fig2.update_traces(showlegend=False)
+    fig2.update_traces(showlegend=False,
+                       hovertemplate='<b>ID do Entregador:</b> %{y}<br><b>Tempo Médio de Entrega:</b> %{x}<extra></extra>')
     
     return fig2
 
 
 def plot_fig3():
     mean_density = df.groupby('Road_traffic_density')[['Delivery_person_Ratings']].mean().reset_index()
-    fig3 = px.bar(mean_density, x='Delivery_person_Ratings', y='Road_traffic_density',
-                range_x=[mean_density['Delivery_person_Ratings'].min()-0.01, mean_density['Delivery_person_Ratings'].max()+0.01],
-                labels={'Delivery_person_Ratings':'avaliacao_entregador','Road_traffic_density':'densidade_transito'},
-                color='Road_traffic_density')
-    fig3.update_traces(showlegend=False)
+    fig3 = px.bar(mean_density,
+                  x='Delivery_person_Ratings',
+                  y='Road_traffic_density',
+                  range_x=[mean_density['Delivery_person_Ratings'].min()-0.01, mean_density['Delivery_person_Ratings'].max()+0.01],
+                  labels={'Delivery_person_Ratings':'Avaliação Média do Entregador','Road_traffic_density':'Densidade do Tráfego'},
+                  color='Road_traffic_density')
+    fig3.update_traces(showlegend=False,
+                       hovertemplate='<b>Densidade do Tráfego:</b> %{y}<br><b>Avaliação Média do Entregador:</b> %{x}<extra></extra>')
     
     return fig3
 
 
 def plot_fig4():
     std_density = df.groupby('Road_traffic_density')[['Delivery_person_Ratings']].std().reset_index()
-    fig4 = px.bar(std_density, x='Delivery_person_Ratings', y='Road_traffic_density',
-                range_x=[std_density['Delivery_person_Ratings'].min()-0.01, std_density['Delivery_person_Ratings'].max()+0.01],
-                labels={'Delivery_person_Ratings':'avaliacao_entregador','Road_traffic_density':'densidade_transito'},
-                color='Road_traffic_density')
-    fig4.update_traces(showlegend=False)
+    fig4 = px.bar(std_density,
+                  x='Delivery_person_Ratings',
+                  y='Road_traffic_density',
+                  range_x=[std_density['Delivery_person_Ratings'].min()-0.01, std_density['Delivery_person_Ratings'].max()+0.01],
+                  labels={'Delivery_person_Ratings':'Avaliação Desvio Padrão do Entregador','Road_traffic_density':'Densidade do Tráfego'},
+                  color='Road_traffic_density')
+    fig4.update_traces(showlegend=False,
+                       hovertemplate='<b>Densidade do Tráfego:</b> %{y}<br><b>Avaliação Desvio Padrão do Entregador:</b> %{x}<extra></extra>')
     
     return fig4
 
@@ -88,9 +96,10 @@ def plot_fig5():
     mean_weather = df.groupby('Weatherconditions')[['Delivery_person_Ratings']].mean().reset_index()
     fig5 = px.bar(mean_weather, x='Delivery_person_Ratings', y='Weatherconditions',
                 range_x=[mean_weather['Delivery_person_Ratings'].min()-0.02,mean_weather['Delivery_person_Ratings'].max()+0.02],
-                labels={'Delivery_person_Ratings':'avaliacao_entregador','Weatherconditions':'condicao_climatica'},
+                labels={'Delivery_person_Ratings':'Avaliação Média','Weatherconditions':'Condição Climática'},
                 color='Weatherconditions')
-    fig5.update_traces(showlegend=False)
+    fig5.update_traces(showlegend=False,
+                       hovertemplate='<b>Condição Climática:</b> %{y}<br><b>Avaliação Média:</b> %{x}<extra></extra>')
     
     return fig5
 
@@ -99,9 +108,10 @@ def plot_fig6():
     std_weather = df.groupby('Weatherconditions')[['Delivery_person_Ratings']].std().reset_index()
     fig6 = px.bar(std_weather, x='Delivery_person_Ratings', y='Weatherconditions',
                 range_x=[std_weather['Delivery_person_Ratings'].min()-0.02,std_weather['Delivery_person_Ratings'].max()+0.02],
-                labels={'Delivery_person_Ratings':'avaliacao_entregador','Weatherconditions':'condicao_climatica'},
+                labels={'Delivery_person_Ratings':'Avaliação Desvio Padrão','Weatherconditions':'Condição Climática'},
                 color='Weatherconditions')
-    fig6.update_traces(showlegend=False)
+    fig6.update_traces(showlegend=False,
+                       hovertemplate='<b>Condição Climática:</b> %{y}<br><b>Avaliação Desvio Padrão:</b> %{x}<extra></extra>')
     
     return fig6
 
