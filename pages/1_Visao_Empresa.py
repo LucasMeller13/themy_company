@@ -67,7 +67,8 @@ def plot_fig3():
                   text='Road_traffic_density',
                   labels={'Road_traffic_density':'Tipos de Densidade de Tráfego',
                           'ID':'Quantidade de Pedidos','City':'Cidade'})
-    fig3.update_traces(hovertemplate='<b>Cidade:</b> %{x}<br><b>Densidade do Tráfego:</b> %{text}<br><b>Quantidade de Pedidos:</b> %{y}<extra></extra>')
+    fig3.update_traces(hovertemplate='<b>Cidade:</b> %{x}<br><b>Densidade do Tráfego:</b> %{text}<br><b>Quantidade de Pedidos:</b> %{y}<extra></extra>',
+                      showlegend=False)
     
     return fig3
 
