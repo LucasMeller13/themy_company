@@ -38,7 +38,7 @@ def plot_fig1():
                   x='Order_Date',
                   y='ID',
                   labels={'Order_Date':'Data','ID':'Quantidade de Pedidos'})
-    fig1.update_traces(hovertemplate='Data: %{x}<br>Quantidade de Pedidos: %{y}<extra></extra>')
+    fig1.update_traces(hovertemplate='<b>Data:</b> %{x}<br><b>Quantidade de Pedidos:</b> %{y}<extra></extra>')
     
     return fig1
 
@@ -67,7 +67,7 @@ def plot_fig3():
                   text='Road_traffic_density',
                   labels={'Road_traffic_density':'Tipos de Densidade de Tráfego',
                           'ID':'Quantidade de Pedidos','City':'Cidade'})
-    fig3.update_traces(hovertemplate='Cidade: %{x}<br>Densidade do Tráfego: %{text}<br>Quantidade de Pedidos: %{y}<extra></extra>')
+    fig3.update_traces(hovertemplate='<b>Cidade:</b> %{x}<br><b>Densidade do Tráfego:</b> %{text}<br><b>Quantidade de Pedidos:</b> %{y}<extra></extra>')
     
     return fig3
 
@@ -81,7 +81,7 @@ def plot_fig4():
                    y='ID',
                    labels={'week_of_the_year':'Semana do Ano','ID':'Quantidade de Pedidos'})
     
-    fig4.update_traces(hovertemplate='Semana do Ano: %{x}<br>Quantidade de Pedidos: %{y}<extra></extra>')
+    fig4.update_traces(hovertemplate='<b>Semana do Ano:</b> %{x}<br><b>Quantidade de Pedidos:</b> %{y}<extra></extra>')
     
     return fig4    
 
@@ -98,7 +98,7 @@ def plot_fig5():
                    y='result',
                    labels={'week_of_the_year':'Semana do Ano','result':'Média de Entrega por Entregador'})
     
-    fig5.update_traces(hovertemplate='Semana do Ano: %{x}<br>Média de Pedidos por Entregador: %{y}<extra></extra>')
+    fig5.update_traces(hovertemplate='<b>Semana do Ano:</b> %{x}<br><b>Média de Pedidos por Entregador:</b> %{y}<extra></extra>')
     
     return fig5
 
