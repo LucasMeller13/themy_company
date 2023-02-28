@@ -219,4 +219,3 @@ with st.container():
         st.plotly_chart(plot_fig6(), use_container_width=True, config={"displayModeBar": False, "showTips": False})
     
     st.markdown('''---''')
-        
